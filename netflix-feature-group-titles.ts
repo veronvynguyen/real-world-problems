@@ -37,32 +37,33 @@ function initializeVector() {
 }
 
 // Non-optimal 
-// function groupTitles(titles: string[]) {
-// 	initializeVector();
-// 	let anagramsMap = {};
-// 	let result = [];
+function groupTitles2(titles: string[]) {
+    initializeVector();
+    let anagramsMap = {};
+    let result = [];
 
-// 	for (let i = 0; i < titles.length; i++) {
-// 		let title = titles[i];
-// 		for (let j = 0; j < title.length; j++) {
-// 			const character = title[j];
-// 			if (ALPHABET_INDICES[character]) {
-// 				frequenciesVector[ALPHABET_INDICES[character]]++;
-// 			}
-// 		}
+    for (let i = 0; i < titles.length; i++) {
+        let title = titles[i];
+        for (let j = 0; j < title.length; j++) {
+            const character = title[j];
+            if (ALPHABET_INDICES[character]) {
+                frequenciesVector[ALPHABET_INDICES[character]]++;
+            }
+        }
 
-// 		let hasCharacters = frequenciesVector.find(v => v > 0);
+        let hasCharacters = frequenciesVector.find(v => v > 0);
 
-// 		anagramsMap[frequenciesVector] = hasCharacters && !anagramsMap[frequenciesVector] ? [title] : [...anagramsMap[frequenciesVector], title];
+        anagramsMap[frequenciesVector] = hasCharacters && !anagramsMap[frequenciesVector] ? [title] : [...anagramsMap[frequenciesVector], title];
 
-// 		initializeVector();
-// 	}
+        initializeVector();
+    }
 
-// 	result = Object.values(anagramsMap);
+    result = Object.values(anagramsMap);
 
-// 	return result as string[];
-// }
+    return result as string[];
+}
 
+// Optimal
 function mapAnagrams(title) {
     for (let c = 0; c < title.length; c++) {
         let character = title[c];
@@ -104,10 +105,10 @@ function mergeGroup(arr) {
     return merge(left, right);
 }
 
-function groupTitles(arr) {
+function groupTitles1(arr) {
     mergeGroup(arr);
     return Object.values(anagramsMap);
 }
 
-// console.log("groupTitles: ", groupTitles(["duel", "dule", "speed", "spede", "deul", "cars"]))
-console.log("groupTitles: ", groupTitles(["duel", "speed", "spede", "deul", "cars", 'cras']));
+// console.log("groupTitles: ", groupTitles1(["duel", "dule", "speed", "spede", "deul", "cars"]))
+console.log("groupTitles: ", groupTitles1(["duel", "speed", "spede", "deul", "cars", 'cras']));
