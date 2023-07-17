@@ -89,7 +89,7 @@ function merge(left, right) {
         mapAnagrams(right.shift());
     }
 
-    return [...sortedArr, ...left, ...right];
+    return [...left, ...right];
 }
 
 function mergeGroup(arr) {
