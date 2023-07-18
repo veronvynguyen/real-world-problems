@@ -6,23 +6,19 @@ import priceBST from './tree';
 // Binary search tree which stores prices of products in all categories
 let priceTree;
 
-
-const initializePriceTree = () => {
+const initializePriceTree = (prices) => {
     priceTree = new priceBST();
-    priceTree.addNode(20);
-    priceTree.addNode(30);
-    priceTree.addNode(9);
-    priceTree.addNode(14);
-    priceTree.addNode(17);
-    priceTree.addNode(1);
-    priceTree.addNode(6);
-    priceTree.addNode(8);
-    priceTree.addNode(5);
+
+    prices.forEach(price => {
+        priceTree.addNode(price);
+    });
 }
 
 // Stores the prices in a tree structure for ease of search and traversing
-function findPriceRange(low, high) {
-    initializePriceTree();
+function findPriceRange(prices, low, high) {
+    if (prices.length === 0) return;
+
+    initializePriceTree(prices);
     const root = priceTree.root;
     let result = [];
 
@@ -44,6 +40,7 @@ function findPriceRange(low, high) {
     return checkTree(root, result);
 }
 
+const prices = [20, 30, 9, 14, 17, 1, 6, 8, 54];
 const low = 1;
 const high = 10;
-console.log('findPriceRange: ', findPriceRange(low, high)); // [ 9, 1, 6, 5, 8 ]
+console.log('findPriceRange: ', findPriceRange(prices, low, high)); // [ 9, 1, 6, 5, 8 ]
