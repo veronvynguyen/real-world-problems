@@ -6,6 +6,7 @@ import priceTree from './tree';
 // Binary search tree which stores prices of products in all categories
 let priceTree;
 
+
 const initializePriceTree = () => {
     priceTree = new priceTree();
     priceTree.addNode(20);
@@ -19,12 +20,13 @@ const initializePriceTree = () => {
     priceTree.addNode(5);
 }
 
+// Stores the prices in a tree structure for ease of search and traversing
 function findPriceRange(low, high) {
     initializePriceTree();
     const root = priceTree.root;
     let result = [];
 
-    // Perform a preorder traversal of the price tree
+    // Perform a recursive preorder traversal of the price tree
     const checkTree = (root, list) => {
         if (root === null) {
             return result;
