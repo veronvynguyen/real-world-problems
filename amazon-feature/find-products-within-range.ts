@@ -1,13 +1,13 @@
 // https://www.educative.io/blog/crack-coding-interview-real-world-problems#amazon
 // Task: Implement a search filter to find products in a given price range. The product data is in the form of a binary search tree. The values are the prices of products.
 
-import binarySearchTree from './tree';
+import priceTree from './tree';
 
 // Binary search tree which stores prices of products in all categories
 let priceTree;
 
 const initializePriceTree = () => {
-    priceTree = new binarySearchTree();
+    priceTree = new priceTree();
     priceTree.addNode(20);
     priceTree.addNode(30);
     priceTree.addNode(9);
